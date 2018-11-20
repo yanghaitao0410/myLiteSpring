@@ -10,7 +10,7 @@ public class FileSystemXmlApplicationContext extends AbstractApplicationContext 
     }
 
     @Override
-    protected Resource getResource(String path) {
+    protected Resource getResourceByPath(String path) {
         return new FileSystemResource(path);
     }
 }

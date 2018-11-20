@@ -9,7 +9,7 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
     }
 
     @Override
-    protected Resource getResource(String path) {
-        return new ClassPathResource(path);
+    protected Resource getResourceByPath(String path) {
+        return new ClassPathResource(path, getBeanClassLoader());
     }
 }

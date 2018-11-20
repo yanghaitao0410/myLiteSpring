@@ -1,7 +1,6 @@
 package org.litespring.context;
 
-import org.litespring.service.v1.PetStoreService;
+import org.litespring.beans.factory.config.ConfigurableBeanFactory;
 
-public interface ApplicationContext {
-    Object getBean(String beanID);
+public interface ApplicationContext extends ConfigurableBeanFactory {
 }
