@@ -1,6 +1,6 @@
 package org.litespring.context.support;
 
-import org.litespring.core.io.FileSystemResource;
+import org.litespring.core.io.support.FileSystemResource;
 import org.litespring.core.io.Resource;
 
 public class FileSystemXmlApplicationContext extends AbstractApplicationContext {
@@ -10,7 +10,7 @@ public class FileSystemXmlApplicationContext extends AbstractApplicationContext 
     }
 
     @Override
-    protected Resource getResourceByPath(String path) {
+    public Resource getResourceByPath(String path) {
         return new FileSystemResource(path);
     }
 }

@@ -1,5 +1,6 @@
-package org.litespring.core.io;
+package org.litespring.core.io.support;
 
+import org.litespring.core.io.Resource;
 import org.litespring.utils.Assert;
 
 import java.io.File;

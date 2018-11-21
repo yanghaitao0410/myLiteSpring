@@ -1,5 +1,6 @@
-package org.litespring.core.io;
+package org.litespring.core.io.support;
 
+import org.litespring.core.io.Resource;
 import org.litespring.utils.ClassUtils;
 
 import java.io.IOException;

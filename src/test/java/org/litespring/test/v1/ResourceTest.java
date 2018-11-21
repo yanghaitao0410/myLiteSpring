@@ -2,8 +2,8 @@ package org.litespring.test.v1;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.litespring.core.io.ClassPathResource;
-import org.litespring.core.io.FileSystemResource;
+import org.litespring.core.io.support.ClassPathResource;
+import org.litespring.core.io.support.FileSystemResource;
 import org.litespring.core.io.Resource;
 
 import java.io.IOException;
