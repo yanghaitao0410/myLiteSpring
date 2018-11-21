@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 加载bean的默认工厂
  */
-public class DefaultBeanFactory implements ConfigurableBeanFactory,BeanDefinitionRegistry {
+public class DefaultBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory,BeanDefinitionRegistry {
     private Map<String, BeanDefinition> beanDefinitionMap;
     private ClassLoader classLoader;
 
@@ -26,8 +26,18 @@ public class DefaultBeanFactory implements ConfigurableBeanFactory,BeanDefinitio
         if(beanDefinition == null) {
             return null;
         }
-        ClassLoader classLoader = getBeanClassLoader();
+        if(beanDefinition.isSingleton()) {
+            if(getSingleton(beanID) == null) {
+                registrySingleton(beanID, createBean(beanDefinition));
+            }
+            return getSingleton(beanID);
+        }
+        return createBean(beanDefinition);
+    }
+
+    private Object createBean(BeanDefinition beanDefinition) {
         String beanClassName = beanDefinition.getBeanClassName();
+        ClassLoader classLoader = getBeanClassLoader();
         try {
             Class<?> clazz = classLoader.loadClass(beanClassName);
             return clazz.newInstance();

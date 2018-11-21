@@ -5,7 +5,6 @@ import org.litespring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.litespring.context.ApplicationContext;
 import org.litespring.core.io.Resource;
 import org.litespring.core.io.support.DefaultResourceLoader;
-import org.litespring.utils.ClassUtils;
 
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ApplicationContext {
     private DefaultBeanFactory factory;
@@ -14,7 +13,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         factory = new DefaultBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         Resource resource = this.getResourceByPath(configFile);
-        reader.loadBeanDefinitions(resource);
+        reader.registryBeanDefinition(resource);
         factory.setBeanClassLoader(this.getBeanClassLoader());
     }
 
